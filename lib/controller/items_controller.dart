@@ -52,8 +52,8 @@ class ItemsControllerImp extends ItemsController {
     data.clear();
     statusRequest = StatusRequest.loading;
 
-    var response = await itemsData.getData(categoryid.toString(),
-        myServices.sharedPreferences.getString("id").toString());
+    var response = await itemsData.getData(
+        categoryid, myServices.sharedPreferences.getString("id")!);
     print("===============================controller $response ");
 
     statusRequest = handlingData(response);

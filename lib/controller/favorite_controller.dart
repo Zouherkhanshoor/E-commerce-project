@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/core/class/status_request.dart';
 import 'package:flutter_application_1/core/functions/handlingdatacontroller.dart';
@@ -24,20 +25,20 @@ class FavoriteController extends GetxController {
     statusRequest = StatusRequest.loading;
 
     var response = await favoriteData.addFavorite(
-        myServices.sharedPreferences.getString("id").toString(),
-        itemsid.toString());
+        myServices.sharedPreferences.getString("id")!, itemsid);
     print("===============================controller $response ");
 
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {
       if (response['status'] == "success") {
-        Get.snackbar("اشعار", " تم اضافة المنتج للمفضلة");
+        Get.rawSnackbar(
+            title: "اشعار",
+            messageText: const Text(" تم اضافة المنتج للمفضلة"));
         // data.addAll(response['data']);
       } else {
         statusRequest = StatusRequest.failuer;
       }
     }
-    update();
   }
 
   removeFavorite(String itemsid) async {
@@ -45,19 +46,19 @@ class FavoriteController extends GetxController {
     statusRequest = StatusRequest.loading;
 
     var response = await favoriteData.removeFavorite(
-        myServices.sharedPreferences.getString("id")!.toString(),
-        itemsid.toString());
+        myServices.sharedPreferences.getString("id")!, itemsid);
     print("===============================controller $response ");
 
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {
       if (response['status'] == "success") {
-        Get.snackbar("اشعار", " تم حذف المنتج من المفضلة");
+        Get.rawSnackbar(
+            title: "اشعار",
+            messageText: const Text(" تم حذف المنتج من المفضلة"));
         // data.addAll(response['data']);
       } else {
         statusRequest = StatusRequest.failuer;
       }
     }
-    update();
   }
 }

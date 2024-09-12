@@ -22,6 +22,7 @@ class HomePage extends StatelessWidget {
                   child: ListView(
                     children: [
                       CustomAppBar(
+                        onPressedIconFavorite: () {},
                         titleappbar: "Find Product",
                         onPressedIcon: () {},
                         onPressedsearch: () {},

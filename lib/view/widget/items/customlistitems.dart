@@ -81,11 +81,11 @@ class CustomListItems extends GetView<ItemsControllerImp> {
                                   "1") {
                                 controller.setFavorite(itemsModel.itemsId, "0");
                                 controller.removeFavorite(
-                                    itemsModel.itemsId!.toString());
+                                    itemsModel.itemsId.toString());
                               } else {
                                 controller.setFavorite(itemsModel.itemsId, "1");
-                                controller.addFavorite(
-                                    itemsModel.itemsId!.toString());
+                                controller
+                                    .addFavorite(itemsModel.itemsId.toString());
                               }
                             },
                             icon: Icon(
