@@ -1,22 +1,23 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/controller/myfavorite_controller.dart';
+import 'package:flutter_application_1/data/model/myfavorite.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/controller/favorite_controller.dart';
 import 'package:flutter_application_1/controller/items_controller.dart';
 import 'package:flutter_application_1/core/constant/color.dart';
 import 'package:flutter_application_1/core/functions/translatedatabase.dart';
-import 'package:flutter_application_1/data/model/itemsmodel.dart';
 import 'package:flutter_application_1/linkapi.dart';
 
-class CustomListItems extends GetView<ItemsControllerImp> {
-  final ItemsModel itemsModel;
-  const CustomListItems({super.key, required this.itemsModel});
+class CustomListFavoriteItems extends GetView<MyfavoriteController> {
+  final MyFavoriteModel itemsModel;
+  const CustomListFavoriteItems({super.key, required this.itemsModel});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
         onTap: () {
-          controller.goToPageProductDetails(itemsModel);
+          // controller.goToPageProductDetails(itemsModel);
         },
         child: Card(
           child: Padding(
@@ -28,16 +29,16 @@ class CustomListItems extends GetView<ItemsControllerImp> {
                 Hero(
                   tag: "${itemsModel.itemsId}",
                   child: CachedNetworkImage(
-                    imageUrl: "${AppLink.imageItems}/${itemsModel.itemsImage!}",
+                    imageUrl: AppLink.imageItems + "/" + itemsModel.itemsImage!,
                     height: 160,
                     fit: BoxFit.fill,
                   ),
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: 10),
                 Text(
                   translateDataBase(
                       itemsModel.itemsNameAr, itemsModel.itemsName),
-                  style: const TextStyle(
+                  style: TextStyle(
                       color: AppColor.black,
                       fontSize: 15,
                       fontWeight: FontWeight.bold),
@@ -45,7 +46,7 @@ class CustomListItems extends GetView<ItemsControllerImp> {
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
+                      Text(
                         "Rating 3.5 ",
                         textAlign: TextAlign.center,
                       ),
@@ -55,7 +56,7 @@ class CustomListItems extends GetView<ItemsControllerImp> {
                           children: [
                             ...List.generate(
                                 5,
-                                (index) => const Icon(
+                                (index) => Icon(
                                       Icons.star,
                                       size: 12,
                                     ))
@@ -68,30 +69,21 @@ class CustomListItems extends GetView<ItemsControllerImp> {
                   children: [
                     Text(
                       "${itemsModel.itemsPrice}\$",
-                      style: const TextStyle(
+                      style: TextStyle(
                           color: AppColor.primarycolor,
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
                           fontFamily: "sans"),
                     ),
-                    GetBuilder<FavoriteController>(
-                        builder: (controller) => IconButton(
-                            onPressed: () {
-                              if (controller.isFavorite[itemsModel.itemsId] ==
-                                  "1") {
-                                controller.setFavorite(itemsModel.itemsId, "0");
-                                // controller.removeFavorite(itemsModel.itemsId!);
-                              } else {
-                                controller.setFavorite(itemsModel.itemsId, "1");
-                                // controller.addFavorite(itemsModel.itemsId!);
-                              }
-                            },
-                            icon: Icon(
-                              controller.isFavorite[itemsModel.itemsId] == "1"
-                                  ? Icons.favorite
-                                  : Icons.favorite_border_outlined,
-                              color: AppColor.primarycolor,
-                            )))
+                    IconButton(
+                        onPressed: () {
+                          controller.deleteFromFavorite(
+                              itemsModel.favoriteId.toString());
+                        },
+                        icon: Icon(
+                          Icons.delete_outline_outlined,
+                          color: AppColor.primarycolor,
+                        ))
                   ],
                 )
               ],

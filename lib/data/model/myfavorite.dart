@@ -1,4 +1,7 @@
-class ItemsModel {
+class MyFavoriteModel {
+  String? favoriteId;
+  String? favoriteUsersid;
+  String? favoriteItemsid;
   String? itemsId;
   String? itemsName;
   String? itemsNameAr;
@@ -11,15 +14,13 @@ class ItemsModel {
   String? itemsDiscount;
   String? itemsDate;
   String? itemsCat;
-  String? categoiresId;
-  String? categoiresName;
-  String? categoiresNameAr;
-  String? categoiresImage;
-  String? categoiresDatetime;
-  String? favorite;
+  String? usersId;
 
-  ItemsModel(
-      {this.itemsId,
+  MyFavoriteModel(
+      {this.favoriteId,
+      this.favoriteUsersid,
+      this.favoriteItemsid,
+      this.itemsId,
       this.itemsName,
       this.itemsNameAr,
       this.itemsDesc,
@@ -31,14 +32,12 @@ class ItemsModel {
       this.itemsDiscount,
       this.itemsDate,
       this.itemsCat,
-      this.categoiresId,
-      this.categoiresName,
-      this.categoiresNameAr,
-      this.categoiresImage,
-      this.categoiresDatetime,
-      this.favorite});
+      this.usersId});
 
-  ItemsModel.fromJson(Map<String, dynamic> json) {
+  MyFavoriteModel.fromJson(Map<String, dynamic> json) {
+    favoriteId = json['favorite_id'];
+    favoriteUsersid = json['favorite_usersid'];
+    favoriteItemsid = json['favorite_itemsid'];
     itemsId = json['items_id'];
     itemsName = json['items_name'];
     itemsNameAr = json['items_name_ar'];
@@ -51,16 +50,14 @@ class ItemsModel {
     itemsDiscount = json['items_discount'];
     itemsDate = json['items_date'];
     itemsCat = json['items_cat'];
-    categoiresId = json['categoires_id'];
-    categoiresName = json['categoires_name'];
-    categoiresNameAr = json['categoires_name_ar'];
-    categoiresImage = json['categoires_image'];
-    categoiresDatetime = json['categoires_datetime'];
-    favorite = json['favorite'];
+    usersId = json['users_id'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['favorite_id'] = this.favoriteId;
+    data['favorite_usersid'] = this.favoriteUsersid;
+    data['favorite_itemsid'] = this.favoriteItemsid;
     data['items_id'] = this.itemsId;
     data['items_name'] = this.itemsName;
     data['items_name_ar'] = this.itemsNameAr;
@@ -73,12 +70,7 @@ class ItemsModel {
     data['items_discount'] = this.itemsDiscount;
     data['items_date'] = this.itemsDate;
     data['items_cat'] = this.itemsCat;
-    data['categoires_id'] = this.categoiresId;
-    data['categoires_name'] = this.categoiresName;
-    data['categoires_name_ar'] = this.categoiresNameAr;
-    data['categoires_image'] = this.categoiresImage;
-    data['categoires_datetime'] = this.categoiresDatetime;
-    data['favorite'] = this.favorite;
+    data['users_id'] = this.usersId;
     return data;
   }
 }

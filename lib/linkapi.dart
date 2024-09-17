@@ -10,6 +10,7 @@ class AppLink {
   static const String signUp = "$server/auth/signup.php";
   static const String login = "$server/auth/login.php";
   static const String verifyCodeSignUp = "$server/auth/verifycode.php";
+  static const String resend = "$server/auth/resend.php";
 
   // ===============================forgetpassword==================//
 
@@ -30,4 +31,7 @@ class AppLink {
 
   static const String favoriteAdd = "$server/favorite/add.php";
   static const String favoriteRemove = "$server/favorite/remove.php";
+  static const String favoriteView = "$server/favorite/view.php";
+  static const String favoriteDelete =
+      "$server/favorite/deletefromfavorite.php";
 }

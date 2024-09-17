@@ -1,3 +1,4 @@
+import 'package:flutter_application_1/view/screen/myfavorite.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/core/constant/routes.dart';
 import 'package:flutter_application_1/core/middleware/mymiddleware.dart';
@@ -35,4 +36,5 @@ List<GetPage<dynamic>>? routes = [
       page: () => const SuccessResetPassword()),
   GetPage(name: AppRoute.items, page: () => const Items()),
   GetPage(name: AppRoute.productdetails, page: () => const ProductDetails()),
+  GetPage(name: AppRoute.myFavorite, page: () => const MyFavorite()),
 ];

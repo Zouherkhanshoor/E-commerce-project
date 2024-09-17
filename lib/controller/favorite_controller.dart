@@ -10,7 +10,7 @@ class FavoriteController extends GetxController {
 
   List data = [];
 
-  late StatusRequest statusRequest;
+  StatusRequest statusRequest = StatusRequest.none;
 
   MyServices myServices = Get.find();
   Map isFavorite = {};
@@ -39,6 +39,7 @@ class FavoriteController extends GetxController {
         statusRequest = StatusRequest.failuer;
       }
     }
+    update();
   }
 
   removeFavorite(String itemsid) async {
@@ -60,5 +61,6 @@ class FavoriteController extends GetxController {
         statusRequest = StatusRequest.failuer;
       }
     }
+    update();
   }
 }

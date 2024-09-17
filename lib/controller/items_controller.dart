@@ -21,7 +21,7 @@ class ItemsControllerImp extends ItemsController {
 
   List data = [];
 
-  late StatusRequest statusRequest;
+  StatusRequest statusRequest = StatusRequest.none;
 
   MyServices myServices = Get.find();
 
@@ -48,7 +48,7 @@ class ItemsControllerImp extends ItemsController {
   }
 
   @override
-  getItems(categoryid) async {
+  getItems(String categoryid) async {
     data.clear();
     statusRequest = StatusRequest.loading;
 

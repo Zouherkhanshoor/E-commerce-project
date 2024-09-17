@@ -40,7 +40,7 @@ class Items extends StatelessWidget {
                                 crossAxisCount: 2, childAspectRatio: 0.5),
                         itemBuilder: (BuildContext context, index) {
                           controllerFav.isFavorite[controller.data[index]
-                                  ['items_id']] ==
+                                  ['items_id']] =
                               controller.data[index]['favorite'];
                           return CustomListItems(
                               itemsModel:
