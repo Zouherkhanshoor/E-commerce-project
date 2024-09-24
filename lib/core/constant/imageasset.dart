@@ -3,6 +3,7 @@ class AppImageAsset {
   static const String rootlottie = "lottie";
   static const String catego = "assets";
   static const String logo = "$rootImage/logo.png";
+  static const String avatar = "$rootImage/Avatar.png";
   static const String onBoardingImageOne = "$rootImage/one.png";
   static const String onBoardingImageTwo = "$rootImage/two.png";
   static const String onBoardingImageThree = "$rootImage/three.png";

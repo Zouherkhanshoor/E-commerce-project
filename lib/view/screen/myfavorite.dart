@@ -23,7 +23,6 @@ class MyFavorite extends StatelessWidget {
                     Get.toNamed(AppRoute.myFavorite);
                   },
                   titleappbar: "Find Product",
-                  onPressedIcon: () {},
                   onPressedsearch: () {},
                 ),
                 const SizedBox(height: 10),

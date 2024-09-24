@@ -22,8 +22,8 @@ class CustomBotomAppBarHome extends StatelessWidget {
                             onPressed: () {
                               controller.changePage(i);
                             },
-                            textbutton: controller.titlebuttonappbar[i],
-                            icondata: Icons.home,
+                            textbutton: controller.buttonappbar[i]["title"],
+                            icondata: controller.buttonappbar[i]["icon"],
                             active: controller.currentpage == i ? true : false);
                   })),
                 ],

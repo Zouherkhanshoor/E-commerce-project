@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/controller/myfavorite_controller.dart';
 import 'package:flutter_application_1/data/model/myfavorite.dart';
 import 'package:get/get.dart';
-import 'package:flutter_application_1/controller/favorite_controller.dart';
-import 'package:flutter_application_1/controller/items_controller.dart';
 import 'package:flutter_application_1/core/constant/color.dart';
 import 'package:flutter_application_1/core/functions/translatedatabase.dart';
 import 'package:flutter_application_1/linkapi.dart';
@@ -34,11 +32,11 @@ class CustomListFavoriteItems extends GetView<MyfavoriteController> {
                     fit: BoxFit.fill,
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Text(
                   translateDataBase(
                       itemsModel.itemsNameAr, itemsModel.itemsName),
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: AppColor.black,
                       fontSize: 15,
                       fontWeight: FontWeight.bold),
@@ -46,7 +44,7 @@ class CustomListFavoriteItems extends GetView<MyfavoriteController> {
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
+                      const Text(
                         "Rating 3.5 ",
                         textAlign: TextAlign.center,
                       ),
@@ -56,7 +54,7 @@ class CustomListFavoriteItems extends GetView<MyfavoriteController> {
                           children: [
                             ...List.generate(
                                 5,
-                                (index) => Icon(
+                                (index) => const Icon(
                                       Icons.star,
                                       size: 12,
                                     ))
@@ -69,7 +67,7 @@ class CustomListFavoriteItems extends GetView<MyfavoriteController> {
                   children: [
                     Text(
                       "${itemsModel.itemsPrice}\$",
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: AppColor.primarycolor,
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
@@ -80,7 +78,7 @@ class CustomListFavoriteItems extends GetView<MyfavoriteController> {
                           controller.deleteFromFavorite(
                               itemsModel.favoriteId.toString());
                         },
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.delete_outline_outlined,
                           color: AppColor.primarycolor,
                         ))

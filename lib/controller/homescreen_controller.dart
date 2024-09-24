@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/view/screen/settings.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/view/screen/home.dart';
 
@@ -26,17 +27,15 @@ class HomescreenControllerImp extends HomeScreenController {
         )
       ],
     ),
-    const Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Center(
-          child: Text("Favorite"),
-        )
-      ],
-    )
+    const Settings(),
   ];
 
-  List titlebuttonappbar = ["home", "setting", "profile", "favorite"];
+  List buttonappbar = [
+    {"title": "home", "icon": Icons.home},
+    {"title": "ca", "icon": Icons.notifications_active_outlined},
+    {"title": "profile", "icon": Icons.person_pin_rounded},
+    {"title": "settings", "icon": Icons.settings},
+  ];
 
   @override
   changePage(int i) {

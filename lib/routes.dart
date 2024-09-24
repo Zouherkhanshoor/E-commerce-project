@@ -1,3 +1,4 @@
+import 'package:flutter_application_1/view/screen/cart.dart';
 import 'package:flutter_application_1/view/screen/myfavorite.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/core/constant/routes.dart';
@@ -20,7 +21,7 @@ List<GetPage<dynamic>>? routes = [
   GetPage(
       name: "/", page: () => const Language(), middlewares: [MyMiddleWare()]),
 
-  // GetPage(name: "/", page: () => const ProductDetails()),
+  // GetPage(name: "/", page: () => const Cart()),
   GetPage(name: AppRoute.login, page: () => const Login()),
   GetPage(name: AppRoute.homepage, page: () => const HomeScreen()),
   GetPage(name: AppRoute.onboarding, page: () => const OnBoarding()),

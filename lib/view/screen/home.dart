@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/core/constant/routes.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/controller/homecontroller.dart';
 import 'package:flutter_application_1/core/class/handlingdataview.dart';
@@ -24,10 +23,11 @@ class HomePage extends StatelessWidget {
                     children: [
                       CustomAppBar(
                         onPressedIconFavorite: () {
-                          Get.toNamed(AppRoute.myFavorite);
+                          controller.goToMyFavorite();
+                          // Get.toNamed(AppRoute.myFavorite);
                         },
                         titleappbar: "Find Product",
-                        onPressedIcon: () {},
+                        // onPressedIcon: () {},
                         onPressedsearch: () {},
                       ),
                       const CustomCardHome(

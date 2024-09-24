@@ -62,7 +62,7 @@ class VerifyCodeSignUp extends StatelessWidget {
                         onTap: () {
                           controller.reSend();
                         },
-                        child: Center(
+                        child: const Center(
                           child: Text(
                             "Resend the Digit code ",
                             style: TextStyle(

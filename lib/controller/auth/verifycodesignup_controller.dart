@@ -7,6 +7,7 @@ import 'package:flutter_application_1/data/datasource/remote/auth/verifycodesign
 abstract class VerifyCodeSignUpController extends GetxController {
   checkCode();
   goToSuccessSignUp(String verifycodesignup);
+  reSend();
 }
 
 class VerifyCodeSignUpControllerImp extends VerifyCodeSignUpController {
@@ -44,6 +45,7 @@ class VerifyCodeSignUpControllerImp extends VerifyCodeSignUpController {
     super.onInit();
   }
 
+  @override
   reSend() {
     verifyCodeSignUpData.reSendData(email!);
   }

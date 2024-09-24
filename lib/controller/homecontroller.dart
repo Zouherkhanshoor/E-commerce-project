@@ -9,6 +9,7 @@ abstract class HomeController extends GetxController {
   initialData();
   getdata();
   goToItems(List categories, int selectedCat, String categoryid);
+  goToMyFavorite();
 }
 
 class HomeControllerImp extends HomeController {
@@ -64,5 +65,10 @@ class HomeControllerImp extends HomeController {
       "selectedcat": selectedCat,
       "catid": categoryid
     });
+  }
+
+  @override
+  goToMyFavorite() {
+    Get.toNamed(AppRoute.myFavorite);
   }
 }
