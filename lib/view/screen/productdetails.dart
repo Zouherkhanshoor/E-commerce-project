@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/class/handlingdataview.dart';
+import 'package:flutter_application_1/core/constant/routes.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/controller/productdetailscontroller.dart';
 import 'package:flutter_application_1/core/constant/color.dart';
@@ -22,9 +23,11 @@ class ProductDetails extends StatelessWidget {
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             color: AppColor.secoundcolor,
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed(AppRoute.cart);
+            },
             child: const Text(
-              "Add to Cart",
+              "Go to Cart",
               style:
                   TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
             ),

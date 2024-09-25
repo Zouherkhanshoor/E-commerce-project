@@ -1,17 +1,25 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/constant/color.dart';
 import 'package:flutter_application_1/core/constant/imageasset.dart';
 import 'package:flutter_application_1/data/model/itemsmodel.dart';
+import 'package:flutter_application_1/linkapi.dart';
 
 class CustomItemsCartList extends StatelessWidget {
   final String name;
   final String price;
   final String count;
+  final String imagname;
+  final void Function()? onadd;
+  final void Function()? onremove;
   const CustomItemsCartList(
       {super.key,
       required this.name,
       required this.price,
-      required this.count});
+      required this.count,
+      required this.imagname,
+      required this.onadd,
+      required this.onremove});
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +29,9 @@ class CustomItemsCartList extends StatelessWidget {
           children: [
             Expanded(
                 flex: 2,
-                child: Image.asset(
-                  AppImageAsset.logo,
-                  height: 90,
+                child: CachedNetworkImage(
+                  imageUrl: "${AppLink.imageItems}/$imagname",
+                  height: 80,
                 )),
             Expanded(
                 flex: 3,
@@ -44,7 +52,7 @@ class CustomItemsCartList extends StatelessWidget {
                 SizedBox(
                   height: 35,
                   child:
-                      IconButton(onPressed: () {}, icon: const Icon(Icons.add)),
+                      IconButton(onPressed: onadd, icon: const Icon(Icons.add)),
                 ),
                 SizedBox(
                     height: 30,
@@ -55,7 +63,7 @@ class CustomItemsCartList extends StatelessWidget {
                 SizedBox(
                   height: 30,
                   child: IconButton(
-                      onPressed: () {}, icon: const Icon(Icons.remove)),
+                      onPressed: onremove, icon: const Icon(Icons.remove)),
                 )
               ],
             ))

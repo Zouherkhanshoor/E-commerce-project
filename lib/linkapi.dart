@@ -1,5 +1,5 @@
 class AppLink {
-  static const String server = "http://192.168.1.104/ecommerce";
+  static const String server = "http://192.168.1.100/ecommerce";
   static const String imagestatic = "http://192.168.1.104/ecommerce/upload";
   static const String imageCategories = "$imagestatic/categories";
   static const String imageItems = "$imagestatic/items";

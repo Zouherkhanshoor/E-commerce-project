@@ -40,14 +40,14 @@ class BottomNavigationBarCart extends StatelessWidget {
             Container(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: Text(
-                "$shipping",
+                "shipping",
                 style: TextStyle(fontSize: 16),
               ),
             ),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: Text(
-                "300 \$",
+                "$shipping \$",
                 style: TextStyle(fontSize: 16),
               ),
             ),

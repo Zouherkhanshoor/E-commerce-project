@@ -20,8 +20,7 @@ import 'package:flutter_application_1/view/screen/productdetails.dart';
 List<GetPage<dynamic>>? routes = [
   GetPage(
       name: "/", page: () => const Language(), middlewares: [MyMiddleWare()]),
-
-  // GetPage(name: "/", page: () => const Cart()),
+  GetPage(name: AppRoute.cart, page: () => const Cart()),
   GetPage(name: AppRoute.login, page: () => const Login()),
   GetPage(name: AppRoute.homepage, page: () => const HomeScreen()),
   GetPage(name: AppRoute.onboarding, page: () => const OnBoarding()),
