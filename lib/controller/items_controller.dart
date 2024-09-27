@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_application_1/controller/homecontroller.dart';
+import 'package:flutter_application_1/core/constant/routes.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/core/class/status_request.dart';
 import 'package:flutter_application_1/core/functions/handlingdatacontroller.dart';
@@ -12,7 +15,7 @@ abstract class ItemsController extends GetxController {
   goToPageProductDetails(ItemsModel itemsModel);
 }
 
-class ItemsControllerImp extends ItemsController {
+class ItemsControllerImp extends SearchMixController {
   List categories = [];
   String? catid;
   int? selectedCat;
@@ -27,19 +30,19 @@ class ItemsControllerImp extends ItemsController {
 
   @override
   void onInit() {
+    search = TextEditingController();
+
     initialData();
     getItems(catid!);
     super.onInit();
   }
 
-  @override
   initialData() {
     categories = Get.arguments["categories"];
     selectedCat = Get.arguments["selectedcat"];
     catid = Get.arguments["catid"];
   }
 
-  @override
   changeCat(int val, catval) {
     selectedCat = val;
     catid = catval;
@@ -47,7 +50,6 @@ class ItemsControllerImp extends ItemsController {
     update();
   }
 
-  @override
   getItems(String categoryid) async {
     data.clear();
     statusRequest = StatusRequest.loading;
@@ -67,8 +69,11 @@ class ItemsControllerImp extends ItemsController {
     update();
   }
 
-  @override
   goToPageProductDetails(itemsModel) {
     Get.toNamed("productdetails", arguments: {"itemsmodel": itemsModel});
+  }
+
+  goToMyFavorite() {
+    Get.toNamed(AppRoute.myFavorite);
   }
 }

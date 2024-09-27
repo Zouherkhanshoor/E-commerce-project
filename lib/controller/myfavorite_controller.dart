@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_application_1/controller/homecontroller.dart';
+import 'package:flutter_application_1/core/constant/routes.dart';
 import 'package:flutter_application_1/data/datasource/remote/myfavorite_data.dart';
 import 'package:flutter_application_1/data/model/myfavorite.dart';
 import 'package:get/get.dart';
@@ -5,7 +8,7 @@ import 'package:flutter_application_1/core/class/status_request.dart';
 import 'package:flutter_application_1/core/functions/handlingdatacontroller.dart';
 import 'package:flutter_application_1/core/services/services.dart';
 
-class MyfavoriteController extends GetxController {
+class MyfavoriteController extends SearchMixController {
   MyFavoriteData favoriteData = MyFavoriteData(Get.find());
 
   List<MyFavoriteModel> data = [];
@@ -48,7 +51,12 @@ class MyfavoriteController extends GetxController {
 
   @override
   void onInit() {
+    search = TextEditingController();
     getData();
     super.onInit();
+  }
+
+  goToMyFavorite() {
+    Get.toNamed(AppRoute.myFavorite);
   }
 }

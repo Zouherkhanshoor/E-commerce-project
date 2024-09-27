@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_application_1/data/model/itemsmodel.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/core/class/status_request.dart';
 import 'package:flutter_application_1/core/constant/routes.dart';
@@ -5,7 +7,7 @@ import 'package:flutter_application_1/core/functions/handlingdatacontroller.dart
 import 'package:flutter_application_1/core/services/services.dart';
 import 'package:flutter_application_1/data/datasource/remote/home_data.dart';
 
-abstract class HomeController extends GetxController {
+abstract class HomeController extends SearchMixController {
   initialData();
   getdata();
   goToItems(List categories, int selectedCat, String categoryid);
@@ -23,8 +25,6 @@ class HomeControllerImp extends HomeController {
   List categories = [];
   List items = [];
 
-  late StatusRequest statusRequest;
-
   @override
   initialData() {
     lang = myServices.sharedPreferences.getString("lang");
@@ -34,6 +34,7 @@ class HomeControllerImp extends HomeController {
 
   @override
   void onInit() {
+    search = TextEditingController();
     getdata();
     initialData();
     super.onInit();
@@ -49,8 +50,8 @@ class HomeControllerImp extends HomeController {
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {
       if (response['status'] == "success") {
-        categories.addAll(response['categories']);
-        items.addAll(response['items']);
+        categories.addAll(response['categories']['data']);
+        items.addAll(response['items']['data']);
       } else {
         statusRequest = StatusRequest.failuer;
       }
@@ -70,5 +71,51 @@ class HomeControllerImp extends HomeController {
   @override
   goToMyFavorite() {
     Get.toNamed(AppRoute.myFavorite);
+  }
+
+  goToPageProductDetails(itemsModel) {
+    Get.toNamed("productdetails", arguments: {"itemsmodel": itemsModel});
+  }
+}
+
+class SearchMixController extends GetxController {
+  List<ItemsModel> listdata = [];
+  HomeData homeData = HomeData(Get.find());
+
+  late StatusRequest statusRequest;
+  searchData() async {
+    statusRequest = StatusRequest.loading;
+
+    var response = await homeData.searchData(search!.text);
+    print("===============================controller $response ");
+
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      if (response['status'] == "success") {
+        listdata.clear();
+        List responsedata = response['data'];
+        listdata.addAll(responsedata.map((e) => ItemsModel.fromJson(e)));
+      } else {
+        statusRequest = StatusRequest.failuer;
+      }
+    }
+    update();
+  }
+
+  bool isSearch = false;
+  TextEditingController? search;
+
+  checkSearch(val) {
+    if (val == "") {
+      statusRequest = StatusRequest.none;
+      isSearch = false;
+    }
+    update();
+  }
+
+  onSearchItems() {
+    isSearch = true;
+    searchData();
+    update();
   }
 }

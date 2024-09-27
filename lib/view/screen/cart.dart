@@ -14,10 +14,11 @@ class Cart extends StatelessWidget {
   Widget build(BuildContext context) {
     CartController cartcontroller = Get.put(CartController());
     return Scaffold(
-        bottomNavigationBar: BottomNavigationBarCart(
-            price: "${cartcontroller.priceorders}",
-            shipping: "300",
-            totalprice: "1500"),
+        bottomNavigationBar: GetBuilder<CartController>(
+            builder: (controller) => BottomNavigationBarCart(
+                price: "${cartcontroller.priceorders}",
+                shipping: "300",
+                totalprice: "1500")),
         body: GetBuilder<CartController>(
             builder: (controller) => HandlingDataView(
                   statusRequest: controller.statusRequest,
@@ -35,13 +36,13 @@ class Cart extends StatelessWidget {
                             ...List.generate(
                               cartcontroller.data.length,
                               (i) => CustomItemsCartList(
-                                  onadd: () {
-                                    cartcontroller
+                                  onadd: () async {
+                                    await cartcontroller
                                         .add(cartcontroller.data[i].itemsId!);
                                     cartcontroller.refreshpage();
                                   },
-                                  onremove: () {
-                                    cartcontroller.delete(
+                                  onremove: () async {
+                                    await cartcontroller.delete(
                                         cartcontroller.data[i].itemsId!);
                                     cartcontroller.refreshpage();
                                   },
