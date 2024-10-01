@@ -1,3 +1,6 @@
+import 'package:flutter_application_1/view/address/add.dart';
+import 'package:flutter_application_1/view/address/adddetails.dart';
+import 'package:flutter_application_1/view/address/view.dart';
 import 'package:flutter_application_1/view/screen/cart.dart';
 import 'package:flutter_application_1/view/screen/myfavorite.dart';
 import 'package:get/get.dart';
@@ -37,4 +40,9 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoute.items, page: () => const Items()),
   GetPage(name: AppRoute.productdetails, page: () => const ProductDetails()),
   GetPage(name: AppRoute.myFavorite, page: () => const MyFavorite()),
+  // ==================address
+  GetPage(name: AppRoute.addressview, page: () => const AddressView()),
+  GetPage(name: AppRoute.addressadd, page: () => const AddressAdd()),
+  GetPage(
+      name: AppRoute.addressadddetails, page: () => const AddressAddDetails()),
 ];

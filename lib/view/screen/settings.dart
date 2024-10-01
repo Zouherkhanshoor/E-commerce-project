@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/controller/settings_controller.dart';
 import 'package:flutter_application_1/core/constant/color.dart';
 import 'package:flutter_application_1/core/constant/imageasset.dart';
+import 'package:flutter_application_1/core/constant/routes.dart';
 import 'package:get/get.dart';
 
 class Settings extends StatelessWidget {
@@ -47,7 +48,9 @@ class Settings extends StatelessWidget {
                   ),
                   const Divider(),
                   ListTile(
-                    onTap: () {},
+                    onTap: () {
+                      Get.toNamed(AppRoute.addressview);
+                    },
                     title: const Text("Adress"),
                     trailing: const Icon(Icons.house_outlined),
                   ),
