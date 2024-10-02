@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/controller/cart_controller.dart';
 import 'package:flutter_application_1/core/class/handlingdataview.dart';
-import 'package:flutter_application_1/view/widget/cart/appbarcart.dart';
 import 'package:flutter_application_1/view/widget/cart/custom_button_navigationbar_cart.dart';
 import 'package:flutter_application_1/view/widget/cart/customitemscartlist.dart';
 import 'package:flutter_application_1/view/widget/cart/topcardcart.dart';
@@ -14,17 +13,25 @@ class Cart extends StatelessWidget {
   Widget build(BuildContext context) {
     CartController cartcontroller = Get.put(CartController());
     return Scaffold(
+        appBar: AppBar(
+          title: Text("My Cart"),
+          centerTitle: true,
+        ),
         bottomNavigationBar: GetBuilder<CartController>(
             builder: (controller) => BottomNavigationBarCart(
+                shipping: "0",
+                controllercoupon: controller.controllercoupon!,
+                onapplycoupon: () {
+                  controller.checkCoupon();
+                },
                 price: "${cartcontroller.priceorders}",
-                shipping: "300",
-                totalprice: "1500")),
+                discount: "${cartcontroller.discountcoupon}%",
+                totalprice: "${controller.gettotalprice()}")),
         body: GetBuilder<CartController>(
             builder: (controller) => HandlingDataView(
                   statusRequest: controller.statusRequest,
                   widget: ListView(
                     children: [
-                      const TopAppBarCart(title: "My Cart"),
                       const SizedBox(height: 10),
                       TopCardCart(
                           message:

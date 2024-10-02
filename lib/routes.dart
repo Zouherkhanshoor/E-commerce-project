@@ -2,6 +2,7 @@ import 'package:flutter_application_1/view/address/add.dart';
 import 'package:flutter_application_1/view/address/adddetails.dart';
 import 'package:flutter_application_1/view/address/view.dart';
 import 'package:flutter_application_1/view/screen/cart.dart';
+import 'package:flutter_application_1/view/screen/checkout.dart';
 import 'package:flutter_application_1/view/screen/myfavorite.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/core/constant/routes.dart';
@@ -43,6 +44,7 @@ List<GetPage<dynamic>>? routes = [
   // ==================address
   GetPage(name: AppRoute.addressview, page: () => const AddressView()),
   GetPage(name: AppRoute.addressadd, page: () => const AddressAdd()),
+  GetPage(name: AppRoute.checkout, page: () => const CheckOut()),
   GetPage(
       name: AppRoute.addressadddetails, page: () => const AddressAddDetails()),
 ];

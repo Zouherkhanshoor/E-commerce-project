@@ -4,17 +4,27 @@ import 'package:flutter_application_1/core/functions/handlingdatacontroller.dart
 import 'package:flutter_application_1/core/services/services.dart';
 import 'package:flutter_application_1/data/datasource/remote/cart_data.dart';
 import 'package:flutter_application_1/data/model/cartmodel.dart';
+import 'package:flutter_application_1/data/model/couponmodel.dart';
 import 'package:get/get.dart';
 
 class CartController extends GetxController {
+  TextEditingController? controllercoupon;
   CartData cartdata = CartData(Get.find());
+  int discountcoupon = 0;
+  String? couponname;
+
   late StatusRequest statusRequest;
+  CouponModel? couponModel;
   MyServices myServices = Get.find();
 
   List<CartModel> data = [];
 
   int priceorders = 0;
   int totalcountitems = 0;
+
+  gettotalprice() {
+    return (priceorders - priceorders * discountcoupon / 100);
+  }
 
   add(String itemsid) async {
     statusRequest = StatusRequest.loading;
@@ -60,6 +70,28 @@ class CartController extends GetxController {
     update();
   }
 
+  checkCoupon() async {
+    statusRequest = StatusRequest.loading;
+    update();
+    var response = await cartdata.checkcoupon(controllercoupon!.text);
+    print("===============================controller $response ");
+
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      if (response['status'] == "success") {
+        Map<String, dynamic> datacoupon = response['data'];
+        couponModel = CouponModel.fromJson(datacoupon);
+        discountcoupon = couponModel!.couponDiscount!;
+        couponname = couponModel!.couponName;
+      } else {
+        // statusRequest = StatusRequest.failuer;
+        discountcoupon = 0;
+        couponname = null;
+      }
+    }
+    update();
+  }
+
   resetVarCart() {
     totalcountitems = 0;
     priceorders = 0;
@@ -99,6 +131,8 @@ class CartController extends GetxController {
 
   @override
   void onInit() {
+    couponModel = CouponModel();
+    controllercoupon = TextEditingController();
     view();
     super.onInit();
   }
