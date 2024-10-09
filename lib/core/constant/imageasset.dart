@@ -19,4 +19,6 @@ class AppImageAsset {
   // ====================
 
   static const String sale1 = "$rootImage/sale1.png";
+  static const String delivery = "$rootImage/Delivery.png";
+  static const String drivethru = "$rootImage/Drivethru.png";
 }

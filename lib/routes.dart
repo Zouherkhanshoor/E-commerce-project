@@ -1,3 +1,4 @@
+import 'package:flutter_application_1/animation.dart';
 import 'package:flutter_application_1/view/address/add.dart';
 import 'package:flutter_application_1/view/address/adddetails.dart';
 import 'package:flutter_application_1/view/address/view.dart';
@@ -25,6 +26,7 @@ List<GetPage<dynamic>>? routes = [
   GetPage(
       name: "/", page: () => const Language(), middlewares: [MyMiddleWare()]),
   GetPage(name: AppRoute.cart, page: () => const Cart()),
+  // GetPage(name: "/", page: () => const AnimationTest()),
   GetPage(name: AppRoute.login, page: () => const Login()),
   GetPage(name: AppRoute.homepage, page: () => const HomeScreen()),
   GetPage(name: AppRoute.onboarding, page: () => const OnBoarding()),
