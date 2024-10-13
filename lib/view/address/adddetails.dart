@@ -22,35 +22,44 @@ class AddressAddDetails extends StatelessWidget {
           child: GetBuilder<AddAddressDetailsController>(
               builder: (controller) => HandlingDataView(
                   statusRequest: controller.statusRequest,
-                  widget: ListView(children: [
-                    CustomTextFormAuth(
-                        hinttext: "City",
-                        labeltext: "City",
-                        iconData: Icons.location_city_outlined,
-                        mycontroller: controller.city,
-                        valid: (val) {},
-                        isNumber: false),
-                    CustomTextFormAuth(
-                        hinttext: "Street",
-                        labeltext: "Street",
-                        iconData: Icons.streetview,
-                        mycontroller: controller.street,
-                        valid: (val) {},
-                        isNumber: false),
-                    CustomTextFormAuth(
-                        hinttext: "name",
-                        labeltext: "name",
-                        iconData: Icons.add_location_alt_rounded,
-                        mycontroller: controller.name,
-                        valid: (val) {},
-                        isNumber: false),
-                    CustomButton(
-                      text: "Add",
-                      onPressed: () {
-                        controller.addAddress();
-                      },
-                    )
-                  ])))),
+                  widget: Form(
+                    key: controller.formstate,
+                    child: ListView(children: [
+                      CustomTextFormAuth(
+                          hinttext: "City",
+                          labeltext: "City",
+                          iconData: Icons.location_city_outlined,
+                          mycontroller: controller.city,
+                          valid: (val) {
+                            return validInput(val!, 3, 10, "City");
+                          },
+                          isNumber: false),
+                      CustomTextFormAuth(
+                          hinttext: "Street",
+                          labeltext: "Street",
+                          iconData: Icons.streetview,
+                          mycontroller: controller.street,
+                          valid: (val) {
+                            return validInput(val!, 3, 10, "Street");
+                          },
+                          isNumber: false),
+                      CustomTextFormAuth(
+                          hinttext: "building",
+                          labeltext: "building",
+                          iconData: Icons.add_location_alt_rounded,
+                          mycontroller: controller.name,
+                          valid: (val) {
+                            return validInput(val!, 3, 10, "building");
+                          },
+                          isNumber: false),
+                      CustomButton(
+                        text: "Add",
+                        onPressed: () {
+                          controller.addAddress();
+                        },
+                      )
+                    ]),
+                  )))),
     );
   }
 }

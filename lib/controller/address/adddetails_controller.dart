@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 class AddAddressDetailsController extends GetxController {
   StatusRequest statusRequest = StatusRequest.none;
 
+  GlobalKey<FormState> formstate = GlobalKey<FormState>();
   AddressdData addressdData = AddressdData(Get.find());
 
   MyServices myServices = Get.find();
@@ -31,26 +32,28 @@ class AddAddressDetailsController extends GetxController {
   }
 
   addAddress() async {
-    statusRequest = StatusRequest.loading;
-    update();
-    var response = await addressdData.addData(
-        myServices.sharedPreferences.getString("id")!,
-        name!.text,
-        city!.text,
-        street!.text,
-        lat!,
-        lang!);
-    print("===============================controller $response ");
+    if (formstate.currentState!.validate()) {
+      statusRequest = StatusRequest.loading;
+      update();
+      var response = await addressdData.addData(
+          myServices.sharedPreferences.getString("id")!,
+          name!.text,
+          city!.text,
+          street!.text,
+          lat!,
+          lang!);
+      print("===============================controller $response ");
 
-    statusRequest = handlingData(response);
-    if (StatusRequest.success == statusRequest) {
-      if (response['status'] == "success") {
-        Get.offAllNamed(AppRoute.homepage);
-      } else {
-        statusRequest = StatusRequest.failuer;
+      statusRequest = handlingData(response);
+      if (StatusRequest.success == statusRequest) {
+        if (response['status'] == "success") {
+          Get.offAllNamed(AppRoute.homepage);
+        } else {
+          statusRequest = StatusRequest.failuer;
+        }
       }
-    }
-    update();
+      update();
+    } else {}
   }
 
   @override

@@ -14,12 +14,12 @@ class Cart extends StatelessWidget {
     CartController cartcontroller = Get.put(CartController());
     return Scaffold(
         appBar: AppBar(
-          title: Text("My Cart"),
+          title: const Text("My Cart"),
           centerTitle: true,
         ),
         bottomNavigationBar: GetBuilder<CartController>(
             builder: (controller) => BottomNavigationBarCart(
-                shipping: "0",
+                shipping: "10",
                 controllercoupon: controller.controllercoupon!,
                 onapplycoupon: () {
                   controller.checkCoupon();

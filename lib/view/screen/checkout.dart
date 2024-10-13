@@ -24,7 +24,9 @@ class CheckOut extends StatelessWidget {
           child: MaterialButton(
             color: AppColor.secoundcolor,
             textColor: Colors.white,
-            onPressed: () {},
+            onPressed: () {
+              controller.checkout();
+            },
             child: const Text(
               "CheckOut",
               style: TextStyle(),
@@ -48,25 +50,23 @@ class CheckOut extends StatelessWidget {
                         const SizedBox(height: 5),
                         InkWell(
                           onTap: () {
-                            controller.choosePaymentMethod("cash");
+                            controller.choosePaymentMethod("0");
                           },
                           child: CardPaymentMethodCheckOut(
                             title: "Cash on velivery",
-                            isActive: controller.paymentMethod == "cash"
-                                ? true
-                                : false,
+                            isActive:
+                                controller.paymentMethod == "0" ? true : false,
                           ),
                         ),
                         const SizedBox(height: 10),
                         InkWell(
                           onTap: () {
-                            controller.choosePaymentMethod("card");
+                            controller.choosePaymentMethod("1");
                           },
                           child: CardPaymentMethodCheckOut(
                             title: "Payment Card",
-                            isActive: controller.paymentMethod == "card"
-                                ? true
-                                : false,
+                            isActive:
+                                controller.paymentMethod == "1" ? true : false,
                           ),
                         ),
                         const SizedBox(height: 20),
@@ -82,12 +82,13 @@ class CheckOut extends StatelessWidget {
                           children: [
                             InkWell(
                               onTap: () {
-                                controller.choosedeliverytype("delivery");
+                                controller
+                                    .choosedeliverytype("0"); // 0 => delivery
                               },
                               child: CardDeliveryTypeCheckOut(
                                 title: "Delivery",
                                 imagename: AppImageAsset.delivery,
-                                active: controller.deliverytype == "delivery"
+                                active: controller.deliverytype == "0"
                                     ? true
                                     : false,
                               ),
@@ -95,12 +96,13 @@ class CheckOut extends StatelessWidget {
                             const SizedBox(width: 10),
                             InkWell(
                               onTap: () {
-                                controller.choosedeliverytype("Drivethru");
+                                controller
+                                    .choosedeliverytype("1"); // 1 => drivethru
                               },
                               child: CardDeliveryTypeCheckOut(
-                                title: "Drive thru",
+                                title: "Recive",
                                 imagename: AppImageAsset.drivethru,
-                                active: controller.deliverytype == "Drivethru"
+                                active: controller.deliverytype == "1"
                                     ? true
                                     : false,
                               ),
@@ -108,18 +110,18 @@ class CheckOut extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(height: 20),
-                        if (controller.deliverytype == "delivery")
+                        if (controller.deliverytype == "0")
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
+                              const Text(
                                 "Shipping Address",
                                 style: TextStyle(
                                     color: AppColor.secoundcolor,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16),
                               ),
-                              SizedBox(height: 10),
+                              const SizedBox(height: 10),
                               ...List.generate(
                                 controller.dataaddress.length,
                                 (index) => InkWell(

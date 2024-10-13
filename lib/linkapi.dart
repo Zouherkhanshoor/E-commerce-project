@@ -1,6 +1,6 @@
 class AppLink {
-  static const String server = "http://192.168.1.105/ecommerce";
-  static const String imagestatic = "http://192.168.1.105/ecommerce/upload";
+  static const String server = "http://192.168.1.100/ecommerce";
+  static const String imagestatic = "http://192.168.1.100/ecommerce/upload";
   static const String imageCategories = "$imagestatic/categories";
   static const String imageItems = "$imagestatic/items";
   static const String test = "$server/test.php";
@@ -52,4 +52,9 @@ class AppLink {
   // ==================coupon
 
   static const String checkcoupon = "$server/coupon/checkcoupon.php";
+
+  // ==================checkout
+  static const String checkout = "$server/orders/checkout.php";
+  static const String pendingorders = "$server/orders/pending.php";
+  static const String archive = "$server/orders/archive.php";
 }

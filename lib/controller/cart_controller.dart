@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/class/status_request.dart';
+import 'package:flutter_application_1/core/constant/routes.dart';
 import 'package:flutter_application_1/core/functions/handlingdatacontroller.dart';
 import 'package:flutter_application_1/core/services/services.dart';
 import 'package:flutter_application_1/data/datasource/remote/cart_data.dart';
@@ -12,6 +13,7 @@ class CartController extends GetxController {
   CartData cartdata = CartData(Get.find());
   int discountcoupon = 0;
   String? couponname;
+  String? couponid;
 
   late StatusRequest statusRequest;
   CouponModel? couponModel;
@@ -24,6 +26,15 @@ class CartController extends GetxController {
 
   gettotalprice() {
     return (priceorders - priceorders * discountcoupon / 100);
+  }
+
+  gotopagecheckout() {
+    if (data.isEmpty) return Get.snackbar("تنبيه", "السلة فارغة");
+    Get.toNamed(AppRoute.checkout, arguments: {
+      "couponid": couponid ?? "0",
+      "priceorders": priceorders.toString(),
+      "discountcoupon": discountcoupon.toString(),
+    });
   }
 
   add(String itemsid) async {
@@ -83,10 +94,13 @@ class CartController extends GetxController {
         couponModel = CouponModel.fromJson(datacoupon);
         discountcoupon = couponModel!.couponDiscount!;
         couponname = couponModel!.couponName;
+        couponid = couponModel!.couponId.toString();
       } else {
         // statusRequest = StatusRequest.failuer;
         discountcoupon = 0;
         couponname = null;
+        couponid = null;
+        Get.snackbar("Warning", "coupon not valid");
       }
     }
     update();
