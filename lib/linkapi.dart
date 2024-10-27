@@ -3,7 +3,9 @@ class AppLink {
   static const String imagestatic = "http://192.168.1.100/ecommerce/upload";
   static const String imageCategories = "$imagestatic/categories";
   static const String imageItems = "$imagestatic/items";
+  //==================================================//
   static const String test = "$server/test.php";
+  static const String notification = "$server/notification.php";
 
   // =======================Auth======================= //
 

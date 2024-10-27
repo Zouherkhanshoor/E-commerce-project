@@ -45,7 +45,7 @@ class OrdersPendingController extends GetxController {
   getOrders() async {
     data.clear();
     statusRequest = StatusRequest.loading;
-
+    update();
     var response = await ordersPendingData
         .getData(myServices.sharedPreferences.getString("id")!);
     print("===============================controller $response ");
@@ -61,6 +61,10 @@ class OrdersPendingController extends GetxController {
       }
     }
     update();
+  }
+
+  refreshorder() {
+    getOrders();
   }
 
   @override

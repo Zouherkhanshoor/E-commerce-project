@@ -5,6 +5,7 @@ import 'package:flutter_application_1/view/address/view.dart';
 import 'package:flutter_application_1/view/screen/cart.dart';
 import 'package:flutter_application_1/view/screen/checkout.dart';
 import 'package:flutter_application_1/view/screen/myfavorite.dart';
+import 'package:flutter_application_1/view/screen/orders/details.dart';
 import 'package:flutter_application_1/view/screen/orders/pending.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/core/constant/routes.dart';
@@ -27,7 +28,7 @@ List<GetPage<dynamic>>? routes = [
   GetPage(
       name: "/", page: () => const Language(), middlewares: [MyMiddleWare()]),
   GetPage(name: AppRoute.cart, page: () => const Cart()),
-  // GetPage(name: "/", page: () => const AnimationTest()),
+  // GetPage(name: "/", page: () => NotificationsHelper()),
   GetPage(name: AppRoute.login, page: () => const Login()),
   GetPage(name: AppRoute.homepage, page: () => const HomeScreen()),
   GetPage(name: AppRoute.onboarding, page: () => const OnBoarding()),
@@ -49,6 +50,7 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoute.addressadd, page: () => const AddressAdd()),
   GetPage(name: AppRoute.checkout, page: () => const CheckOut()),
   GetPage(name: AppRoute.orderspending, page: () => const OrdersPending()),
+  GetPage(name: AppRoute.ordersdetails, page: () => const OrdersDetails()),
   GetPage(
       name: AppRoute.addressadddetails, page: () => const AddressAddDetails()),
 ];

@@ -15,7 +15,7 @@ class _AnimationTestState extends State<AnimationTest>
   void initState() {
     animationController = AnimationController(
         vsync: this,
-        duration: Duration(seconds: 3),
+        duration: const Duration(seconds: 3),
         lowerBound: 100,
         upperBound: 300);
     super.initState();
@@ -25,14 +25,15 @@ class _AnimationTestState extends State<AnimationTest>
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Animation"),
+          title: const Text("Animation"),
         ),
         body: Container(
           child: Column(
             children: [
               AnimatedBuilder(
                   animation: animationController,
-                  child: Text("fbekfbjkfbejkk smdc "),
+                  child:
+                      const Text("fbekfbjkfbejkk smdc sbfejkbfkejbffbkjfwwfkj"),
                   builder: (context, child) {
                     return Container(
                       height: animationController.value,
@@ -57,31 +58,31 @@ class _AnimationTestState extends State<AnimationTest>
                     onPressed: () {
                       animationController.forward();
                     },
-                    child: Text("Forword"),
+                    child: const Text("Forword"),
                   ),
                   MaterialButton(
                     onPressed: () {
                       animationController.reverse();
                     },
-                    child: Text("Reverse"),
+                    child: const Text("Reverse"),
                   ),
                   MaterialButton(
                     onPressed: () {
                       animationController.stop();
                     },
-                    child: Text("Stop"),
+                    child: const Text("Stop"),
                   ),
                   MaterialButton(
                     onPressed: () {
                       animationController.repeat();
                     },
-                    child: Text("repeat"),
+                    child: const Text("repeat"),
                   ),
                   MaterialButton(
                     onPressed: () {
                       animationController.reset();
                     },
-                    child: Text("reset"),
+                    child: const Text("reset"),
                   )
                 ],
               )

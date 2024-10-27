@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/binding.dart';
@@ -11,6 +12,7 @@ import 'package:flutter_application_1/routes.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initialservices();
+  // FirebaseMessaging.instance.subscribeToTopic("all");
   runApp(
     const MyApp(),
   );

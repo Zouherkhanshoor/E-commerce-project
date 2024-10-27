@@ -70,6 +70,11 @@ dependencies:
   image_pickers: ^2.0.5+2
   flutter_otp_text_field: ^1.2.0
   lottie: ^3.1.2
+  googleapis_auth: ^1.6.0
+  dio: ^5.7.0
+  googleapis: ^13.2.0
+  flutter_ringtone_player: ^4.0.0+3
+  firestore_util: ^0.0.3
 
 
 dev_dependencies:

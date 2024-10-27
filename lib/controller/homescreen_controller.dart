@@ -3,6 +3,8 @@ import 'package:flutter_application_1/view/screen/settings.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/view/screen/home.dart';
 
+import '../view/screen/notification.dart';
+
 abstract class HomeScreenController extends GetxController {
   changePage(int i);
 }
@@ -11,14 +13,7 @@ class HomescreenControllerImp extends HomeScreenController {
   int currentpage = 0;
   List<Widget> listpage = [
     const HomePage(),
-    const Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Center(
-          child: Text("Settings"),
-        )
-      ],
-    ),
+    NotificationView(),
     const Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
