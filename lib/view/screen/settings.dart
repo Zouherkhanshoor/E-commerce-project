@@ -4,6 +4,7 @@ import 'package:flutter_application_1/core/constant/color.dart';
 import 'package:flutter_application_1/core/constant/imageasset.dart';
 import 'package:flutter_application_1/core/constant/routes.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Settings extends StatelessWidget {
   const Settings({super.key});
@@ -57,7 +58,7 @@ class Settings extends StatelessWidget {
                   const Divider(),
                   ListTile(
                     onTap: () {
-                      Get.toNamed(AppRoute.addressview);
+                      Get.toNamed(AppRoute.ordersarchive);
                     },
                     title: const Text("Archive"),
                     trailing: const Icon(Icons.archive_outlined),
@@ -78,9 +79,12 @@ class Settings extends StatelessWidget {
                   ),
                   const Divider(),
                   ListTile(
-                    onTap: () {},
+                    onTap: () async {
+                      await launchUrl(Uri.parse("https://wa.me/+963949636289"));
+                      // await launchUrl(Uri.parse("tel:+963949636289"));
+                    },
                     title: const Text("Contact Us"),
-                    trailing: const Icon(Icons.contact_phone_outlined),
+                    trailing: const Icon(Icons.wifi_calling_3),
                   ),
                   const Divider(),
                   ListTile(

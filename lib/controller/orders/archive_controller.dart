@@ -1,12 +1,12 @@
 import 'package:flutter_application_1/core/class/status_request.dart';
 import 'package:flutter_application_1/core/functions/handlingdatacontroller.dart';
 import 'package:flutter_application_1/core/services/services.dart';
-import 'package:flutter_application_1/data/datasource/remote/orders/pending_data.dart';
+import 'package:flutter_application_1/data/datasource/remote/orders/archive_data.dart';
 import 'package:flutter_application_1/data/model/ordersmodel.dart';
 import 'package:get/get.dart';
 
-class OrdersPendingController extends GetxController {
-  OrdersPendingData ordersPendingData = OrdersPendingData(Get.find());
+class OrdersArchiveController extends GetxController {
+  OrdersArchiveData ordersArchiveData = OrdersArchiveData(Get.find());
 
   List<OrdersModel> data = [];
 
@@ -48,7 +48,7 @@ class OrdersPendingController extends GetxController {
     data.clear();
     statusRequest = StatusRequest.loading;
     update();
-    var response = await ordersPendingData
+    var response = await ordersArchiveData
         .getData(myServices.sharedPreferences.getString("id")!);
     print("===============================controller $response ");
 
@@ -58,24 +58,6 @@ class OrdersPendingController extends GetxController {
         List listdata = response['data'];
         data.addAll(listdata.map((e) => OrdersModel.fromJson(e)));
         // data.addAll(response['data']);
-      } else {
-        statusRequest = StatusRequest.failuer;
-      }
-    }
-    update();
-  }
-
-  deleteOrders(String ordersid) async {
-    data.clear();
-    statusRequest = StatusRequest.loading;
-    update();
-    var response = await ordersPendingData.deleteData(ordersid);
-    print("===============================controller $response ");
-
-    statusRequest = handlingData(response);
-    if (StatusRequest.success == statusRequest) {
-      if (response['status'] == "success") {
-        refreshorder();
       } else {
         statusRequest = StatusRequest.failuer;
       }

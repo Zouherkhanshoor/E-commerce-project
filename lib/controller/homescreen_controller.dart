@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/view/screen/offers.dart';
 import 'package:flutter_application_1/view/screen/settings.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/view/screen/home.dart';
@@ -13,22 +14,15 @@ class HomescreenControllerImp extends HomeScreenController {
   int currentpage = 0;
   List<Widget> listpage = [
     const HomePage(),
-    NotificationView(),
-    const Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Center(
-          child: Text("Profile"),
-        )
-      ],
-    ),
+    const NotificationView(),
+    const OffersView(),
     const Settings(),
   ];
 
   List buttonappbar = [
     {"title": "home", "icon": Icons.home},
-    {"title": "ca", "icon": Icons.notifications_active_outlined},
-    {"title": "profile", "icon": Icons.person_pin_rounded},
+    {"title": "notification", "icon": Icons.notifications_active_outlined},
+    {"title": "offers", "icon": Icons.offline_bolt_sharp},
     {"title": "settings", "icon": Icons.settings},
   ];
 

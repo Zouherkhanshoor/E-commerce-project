@@ -5,6 +5,8 @@ import 'package:flutter_application_1/view/address/view.dart';
 import 'package:flutter_application_1/view/screen/cart.dart';
 import 'package:flutter_application_1/view/screen/checkout.dart';
 import 'package:flutter_application_1/view/screen/myfavorite.dart';
+import 'package:flutter_application_1/view/screen/offers.dart';
+import 'package:flutter_application_1/view/screen/orders/archive.dart';
 import 'package:flutter_application_1/view/screen/orders/details.dart';
 import 'package:flutter_application_1/view/screen/orders/pending.dart';
 import 'package:get/get.dart';
@@ -51,6 +53,8 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoute.checkout, page: () => const CheckOut()),
   GetPage(name: AppRoute.orderspending, page: () => const OrdersPending()),
   GetPage(name: AppRoute.ordersdetails, page: () => const OrdersDetails()),
+  GetPage(name: AppRoute.ordersarchive, page: () => const OrdersArchiveView()),
+  // GetPage(name: AppRoute.offers, page: () => const OffersView()),
   GetPage(
       name: AppRoute.addressadddetails, page: () => const AddressAddDetails()),
 ];
