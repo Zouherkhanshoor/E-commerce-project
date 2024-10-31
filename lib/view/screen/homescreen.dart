@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/constant/routes.dart';
+import 'package:flutter_application_1/core/functions/alertexitapp.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/controller/homescreen_controller.dart';
 import 'package:flutter_application_1/core/constant/color.dart';
@@ -24,6 +25,14 @@ class HomeScreen extends StatelessWidget {
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerDocked,
             bottomNavigationBar: const CustomBotomAppBarHome(),
-            body: controller.listpage.elementAt(controller.currentpage)));
+            body: PopScope<Object>(
+                canPop: false,
+                onPopInvokedWithResult: (bool didPop, Object? result) {
+                  if (didPop) {
+                    return;
+                  }
+                  alertExitApp();
+                },
+                child: controller.listpage.elementAt(controller.currentpage))));
   }
 }

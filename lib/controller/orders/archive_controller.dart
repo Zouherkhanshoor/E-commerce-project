@@ -1,4 +1,5 @@
 import 'package:flutter_application_1/core/class/status_request.dart';
+import 'package:flutter_application_1/core/constant/routes.dart';
 import 'package:flutter_application_1/core/functions/handlingdatacontroller.dart';
 import 'package:flutter_application_1/core/services/services.dart';
 import 'package:flutter_application_1/data/datasource/remote/orders/archive_data.dart';
@@ -58,6 +59,25 @@ class OrdersArchiveController extends GetxController {
         List listdata = response['data'];
         data.addAll(listdata.map((e) => OrdersModel.fromJson(e)));
         // data.addAll(response['data']);
+      } else {
+        statusRequest = StatusRequest.failuer;
+      }
+    }
+    update();
+  }
+
+  submitRating(String ordersid, double rating, String comment) async {
+    data.clear();
+    statusRequest = StatusRequest.loading;
+    update();
+    var response =
+        await ordersArchiveData.rating(ordersid, comment, rating.toString());
+    print("===============================controller $response ");
+
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      if (response['status'] == "success") {
+        getOrders();
       } else {
         statusRequest = StatusRequest.failuer;
       }

@@ -75,6 +75,7 @@ dependencies:
   googleapis: ^13.2.0
   flutter_ringtone_player: ^4.0.0+3
   firestore_util: ^0.0.3
+  rating_dialog: ^2.0.4
 
 
 dev_dependencies:

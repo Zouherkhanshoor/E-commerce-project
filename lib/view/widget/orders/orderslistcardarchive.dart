@@ -3,6 +3,7 @@ import 'package:flutter_application_1/controller/orders/archive_controller.dart'
 import 'package:flutter_application_1/core/constant/color.dart';
 import 'package:flutter_application_1/core/constant/routes.dart';
 import 'package:flutter_application_1/data/model/ordersmodel.dart';
+import 'package:flutter_application_1/view/widget/orders/dialograting.dart';
 import 'package:get/get.dart';
 import 'package:jiffy/jiffy.dart';
 
@@ -60,10 +61,20 @@ class CardOrdersListArchive extends GetView<OrdersArchiveController> {
                     Get.toNamed(AppRoute.ordersdetails,
                         arguments: {"ordersmodel": listdata});
                   },
-                  color: AppColor.fourthcolor,
+                  color: AppColor.secoundcolor,
                   textColor: Colors.white,
                   child: const Text("Details"),
                 ),
+                SizedBox(width: 10),
+                if (listdata.ordersRating == "0")
+                  MaterialButton(
+                    onPressed: () {
+                      showDialodRating(context, listdata.ordersId!);
+                    },
+                    color: AppColor.fourthcolor,
+                    textColor: Colors.white,
+                    child: const Text("Rating"),
+                  ),
               ],
             )
           ],
